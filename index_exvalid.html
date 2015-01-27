@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <form id="ex1" action="index.html" method="" accept-charset="utf-8">
+  <form id="ex1" action="index_exvalid.html" method="" accept-charset="utf-8">
   	<label for="localidade">localidade</label>
   	<input id="localidade" type="text" name="localidade" value="">
     
@@ -21,6 +21,53 @@
   
     <input type="submit">
   
-  </form>	
+  </form> 
+  
+  <script src="jquery.js"></script>
+  <script src="jquery-validation/dist/jquery.validate.js"></script>
+
+  <script>
+          $("#vform").validate(
+    {
+      rules: {
+        localidade: "required",
+
+        localidade:{
+          required: true,
+          minlength: 5
+        },
+       
+        email1: {
+          required: true,
+          email: true
+        },
+
+        email2: {
+          required: true,
+          email: true
+        }
+      },  
+
+      messages:{
+      localidade:'o nome é obrigatorio',
+  
+      email1: {
+        required:"please enter a valid email adress",
+        email1: "please enter a valid email adress",
+      },
+      
+      email2: {
+        required:"please enter a valid email adress",
+        email1: "please enter a valid email adress",
+      }
+
+    }   
+    }
+
+      );
+    
+  </script> 
+  
+  
 </body>
 </html>
