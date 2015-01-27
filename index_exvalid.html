@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset=utf-8 />
+  <meta charset="utf-8" />
   <title>158 -exercicio validacao</title>
   <link rel="shortcut icon" href="favicon.ico" />  
   <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
-  <form id="ex1" action="index_exvalid.html" method="" accept-charset="utf-8">
-  	<label for="localidade">localidade</label>
-  	<input id="localidade" type="text" name="localidade" value="">
+  <form id="ex1" action="index_exvalid.html" method="post" accept-charset="utf-8">
+    <label for="localidade">Localidade</label>
+    <input id="localidade" type="text" name="localidade" value="">
     
-  	
-  	<label for="email1">Email</label>
+    <br></br>
+    <label for="email1">Email</label>
     <input id="email1" type="email" name="email1" value=""><br>
-    
+    <br></br>
     <label for="email2">Email</label>
     <input id="email2" type="email" name="email2" value=""><br>
     
-  
+    <br></br>
     <input type="submit">
-  
-  </form> 
-  
+    </form> 
+
   <script src="jquery.js"></script>
   <script src="jquery-validation/dist/jquery.validate.js"></script>
-
-  <script>
-          $("#vform").validate(
-    {
-      rules: {
-        localidade: "required",
-
-        localidade:{
-          required: true,
-          minlength: 5
-        },
-       
-        email1: {
-          required: true,
-          email: true
-        },
-
-        email2: {
-          required: true,
-          email: true
-        }
-      },  
-
-      messages:{
-      localidade:'o nome é obrigatorio',
   
+
+  <script> 
+  $("#ex1").validate(
+  {
+    rules:{
+      localidade: {
+        required: true,
+        minlength: 5,
+      },
       email1: {
-        required:"please enter a valid email adress",
-        email1: "please enter a valid email adress",
+        required: true,
+        minlength: 5,
+        email: true,
+      },
+      email2: {
+        required: true,
+        minlength: 5,
+        equalTo: "#email1",
+        email: true,
+      },
+    },
+    messages:{
+      localidade:'a localida tem de ter mais de 5 caractares',
+      email1: {
+        email: "O email e um campo obrigatorio",
+        required: "email obrigatorio",
+        minlength: jQuery.validator.format("insira pelo menos {0} characters"),
       },
       
       email2: {
-        required:"please enter a valid email adress",
-        email1: "please enter a valid email adress",
-      }
+        required: "repita o seu email",
+        minlength: jQuery.validator.format("insira pelo menos {0} characters"),
+        equalTo: "devem ser iguais",
+      },
+    },
+  }
+    );
+  </script>
 
-    }   
-    }
-
-      );
-    
-  </script> 
-  
-  
 </body>
 </html>
